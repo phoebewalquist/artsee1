@@ -1,3 +1,8 @@
+// Service modules export business/app logic
+// such as managing tokens, etc.
+// Service modules often depend upon API modules
+// for making AJAX requests to the server.
+
 import * as usersAPI from './users-api';
 
 export async function signUp(userData) {
@@ -37,10 +42,4 @@ export function getUser() {
   return token ? JSON.parse(atob(token.split('.')[1])).user : null;
 }
 
-export function checkToken() {
-  // Just so that you don't forget how to use .then
-  return usersAPI.checkToken()
-    // checkToken returns a string, but let's 
-    // make it a Date object for more flexibility
-    .then(dateStr => new Date(dateStr));
-}
+
