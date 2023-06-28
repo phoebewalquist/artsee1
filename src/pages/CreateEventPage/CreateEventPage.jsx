@@ -1,84 +1,63 @@
-import React, { useState } from 'react';
-const CreateEventPage = () => {
-  return (
-    <>
-      <ArtEventForm />
-    </>
-  );
-};
+import { useState } from "react";
 
-export default CreateEventPage;
+export default function CreateEventPage() {
+  const [inputValue, setInputValue] = useState("");
 
-const ArtEventForm = () => {
-  // State variables to store form values
-  const [eventTitle, setEventTitle] = useState('');
-  const [eventDate, setEventDate] = useState('');
-  const [eventTime, setEventTime] = useState('');
-  const [eventCategory, setEventCategory] = useState('');
-  const [eventDescription, setEventDescription] = useState('');
+  const handleChange = (evt) => {
+    setInputValue(evt.target.value);
+  };
 
-  // Function to handle form submission
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    // Perform any necessary actions with the form data
-    // For example, you can send it to a backend server
-
-    // Reset form values
-    setEventTitle('');
-    setEventDate('');
-    setEventTime('');
-    setEventCategory('');
-    setEventDescription('');
+  const handleSubmit = (evt) => {
+    evt.preventDefault();
+    // Perform any necessary actions with the input value
+    // For example, you can update state or send it to a backend server
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <label htmlFor="eventTitle">Event Title:</label>
-      <input
-        type="text"
-        id="eventTitle"
-        value={eventTitle}
-        onChange={(e) => setEventTitle(e.target.value)}
-      />
+    <div className="full-screen-container">
+      <div className="create-event-container">
+        <h3 className="create-event-title">Create an Event</h3>
+        <form onSubmit={handleSubmit}>
+          <div className="input-group">
+            <label htmlFor="eventTitle">Event Title:</label>
+            <input
+              type="text"
+              id="eventTitle"
+              value={inputValue}
+              onChange={handleChange}
+            />
+          </div>
 
-      <label htmlFor="eventDate">Date:</label>
-      <input
-        type="date"
-        id="eventDate"
-        value={eventDate}
-        onChange={(e) => setEventDate(e.target.value)}
-      />
+          <div className="input-group">
+            <label htmlFor="eventDate">Date:</label>
+            <input type="date" id="eventDate" />
+          </div>
 
-      <label htmlFor="eventTime">Time:</label>
-      <input
-        type="time"
-        id="eventTime"
-        value={eventTime}
-        onChange={(e) => setEventTime(e.target.value)}
-      />
+          <div className="input-group">
+            <label htmlFor="eventTime">Time:</label>
+            <input type="time" id="eventTime" />
+          </div>
 
-      <label htmlFor="eventCategory">Category:</label>
-      <select
-        id="eventCategory"
-        value={eventCategory}
-        onChange={(e) => setEventCategory(e.target.value)}
-      >
-        <option value="">Select a category</option>
-        <option value="Painting">Painting</option>
-        <option value="Sculpture">Sculpture</option>
-        <option value="Photography">Photography</option>
-        {/* Add more options as needed */}
-      </select>
+          <div className="input-group">
+            <label htmlFor="eventCategory">Category:</label>
+            <select id="eventCategory">
+              <option value="">Select a category</option>
+              <option value="Painting">Painting</option>
+              <option value="Sculpture">Sculpture</option>
+              <option value="Photography">Photography</option>
+            </select>
+          </div>
 
-      <label htmlFor="eventDescription">Description:</label>
-      <textarea
-        id="eventDescription"
-        value={eventDescription}
-        onChange={(e) => setEventDescription(e.target.value)}
-      ></textarea>
+          <div className="input-group">
+            <label htmlFor="eventDescription">Description:</label>
+            <textarea id="eventDescription"></textarea>
+          </div>
 
-      <button type="submit">Submit</button>
-    </form>
+          <button type="submit" className="create-event-button">
+            Create Event
+          </button>
+        </form>
+      </div>
+    </div>
   );
-};
+}

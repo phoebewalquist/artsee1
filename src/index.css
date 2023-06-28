@@ -1,10 +1,10 @@
 :root {
-  --white: #000004;
+  --white: #59595a;
   --tan-1: #555466;
-  --tan-2: #561d5c;
-  --tan-3: #120c07;
-  --tan-4: #100d1c;
-  --orange: #0c192e;
+  --tan-2: #f5f2f5;
+  --tan-3: #cabcb0;
+  --tan-4: #f3faf7;
+  --orange: #2a323f;
   --text-light: #b8b0aa;
   --text-dark: #99928d;
 }
@@ -29,6 +29,7 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
 
 #root {
   height: 100%;
