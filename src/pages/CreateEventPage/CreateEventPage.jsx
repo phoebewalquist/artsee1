@@ -9,8 +9,13 @@ export default function CreateEventPage() {
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
-    // Perform any necessary actions with the input value
-    // For example, you can update state or send it to a backend server
+    uploadEvent(inputValue);
+  };
+
+  const uploadEvent = (eventData) => {
+    //  implement the logic to upload the event data here
+    //  make an API request to the backend to create a new event
+    console.log("Event data:", eventData);
   };
 
   return (
