@@ -5,6 +5,7 @@ import Logo from '../../components/Logo/Logo';
 import EventDetail from '../../components/EventDetail/EventDetail';
 import UserLogOut from '../../components/UserLogOut/UserLogOut';
 
+
 export default function NewOrderPage({ user, setUser }) {
   const [activeCat, setActiveCat] = useState('');
   const categoriesRef = useRef([]);
