@@ -7,6 +7,7 @@ import NewEventPage from "../NewEventPage/NewEventPage";
 import CreateEventPage from "../CreateEventPage/CreateEventPage";
 import NavBar from "../../components/NavBar/NavBar";
 
+
 export default function App() {
   const [user, setUser] = useState(getUser());
   return (
@@ -16,11 +17,11 @@ export default function App() {
         
           <Routes>
             <Route
-              path="/orders/new"
+              path="/events/new"
               element={<NewEventPage user={user} setUser={setUser} />}
             />
-            <Route path="/orders" element={<CreateEventPage />} />
-            <Route path="/*" element={<Navigate to="/orders/new" />} />
+            <Route path="/events" element={<CreateEventPage />} />
+            <Route path="/*" element={<Navigate to="/events/new" />} />
           </Routes>
         
       ) : (

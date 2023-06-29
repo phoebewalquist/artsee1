@@ -17,7 +17,7 @@ export default function NewOrderPage({ user, setUser }) {
       <aside>
         <Logo />
      
-        <Link to="/orders" className="button btn-sm">CREATE EVENT</Link>
+        <Link to="/events" className="button btn-sm">CREATE EVENT</Link>
         <UserLogOut user={user} setUser={setUser} />
       </aside>
       <EventDetail />
