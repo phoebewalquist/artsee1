@@ -1,58 +1,69 @@
-import { Component } from 'react';
-import { signUp } from '../../utilities/users-service';
+import { useState } from 'react'
+import * as usersService from '../../utilities/users-service';
+import { useNavigate } from 'react-router-dom'
 
-export default class SignUpForm extends Component {
-  state = {
-    name: '',
-    email: '',
-    password: '',
-    confirm: '',
-    error: ''
-  };
+export default function SignUpForm({setUser}) {
+  const [signUpForm, setSignUpForm ] = useState(
+    {
+      name: '',
+      email: '',
+      password: '',
+      confirm: '',
+      error: ''
+  })
+  const navigate = useNavigate()
+  const disable = signUpForm.password !== signUpForm.confirm;
 
-  handleChange = (evt) => {
-    this.setState({
+  function handleChange(evt) {
+    setSignUpForm({...signUpForm,
       [evt.target.name]: evt.target.value,
       error: ''
-    });
-  };
+    })
+  }
 
-  handleSubmit = async (evt) => {
+  async function handleSubmit(evt) {
     evt.preventDefault();
     try {
-      const {name, email, password} = this.state;
-      const formData = {name, email, password};
-      // The promise returned by the signUp service
-      // method will resolve to the user object included
-      // in the payload of the JSON Web Token (JWT)
-      const user = await signUp(formData);
-      this.props.setUser(user);
+      const formData = {
+        name: signUpForm.name,
+        email: signUpForm.email,
+        password: signUpForm.password
+      }
+      const user = await usersService.signUp(formData)
+      setUser(user)
+      navigate("/events/new")
+      
     } catch {
-      // An error occurred
-      // Probably due to a duplicate email
-      this.setState({ error: 'Sign Up Failed - Try Again' });
+      setSignUpForm({...signUpForm, error: 'Sign Up Failed - Try Again' })
     }
-  };
+  }
 
-  render() {
-    const disable = this.state.password !== this.state.confirm;
-    return (
+  return (
       <div>
-        <div className="form-container">
-          <form autoComplete="off" onSubmit={this.handleSubmit}>
-            <label>Name</label>
-            <input type="text" name="name" value={this.state.name} onChange={this.handleChange} required />
-            <label>Email</label>
-            <input type="email" name="email" value={this.state.email} onChange={this.handleChange} required />
-            <label>Password</label>
-            <input type="password" name="password" value={this.state.password} onChange={this.handleChange} required />
-            <label>Confirm</label>
-            <input type="password" name="confirm" value={this.state.confirm} onChange={this.handleChange} required />
-            <button type="submit" disabled={disable}>SIGN UP</button>
+        <div className="auth-form-container" id="sign-up-form-container">
+          <div className='componentTitle'>Sign Up:</div>
+          <form autoComplete="off" onSubmit={handleSubmit}>
+            <div className='inputDiv'>
+              <label>Name</label>
+              <input type="text" name="name" value={signUpForm.name} onChange={handleChange} required />
+            </div>
+            <div className='inputDiv'>
+              <label>Email</label>
+              <input type="email" name="email" value={signUpForm.email} onChange={handleChange} required />
+            </div>
+            <div className='inputDiv'>
+              <label>Password</label>
+              <input type="password" name="password" value={signUpForm.password} onChange={handleChange} required />
+            </div>
+            <div className='inputDiv'>
+              <label>Confirm</label>
+              <input type="password" name="confirm" value={signUpForm.confirm} onChange={handleChange} required />
+            </div>
+            <div className="button"><button type="submit" disabled={disable}>SIGN UP</button></div>
           </form>
         </div>
-        <p className="error-message">&nbsp;{this.state.error}</p>
+        <p className="error-message">&nbsp;{signUpForm.error}</p>
       </div>
-    );
-  }
+  )
+
 }
