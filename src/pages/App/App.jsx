@@ -6,6 +6,7 @@ import AuthPage from "../AuthPage/AuthPage";
 import NewEventPage from "../NewEventPage/NewEventPage";
 import CreateEventPage from "../CreateEventPage/CreateEventPage";
 import NavBar from "../../components/NavBar/NavBar";
+import EventsList from "../../components/EventsList/EventsList"
 
 
 export default function App() {
@@ -22,6 +23,7 @@ export default function App() {
             />
             <Route path="/events" element={<CreateEventPage />} />
             <Route path="/*" element={<Navigate to="/events/new" />} />
+            <Route path="/events" element={<EventsList />} />
           </Routes>
         
       ) : (

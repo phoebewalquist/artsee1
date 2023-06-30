@@ -6,6 +6,7 @@ import EventDetail from '../../components/EventDetail/EventDetail';
 import UserLogOut from '../../components/UserLogOut/UserLogOut';
 import { getAllEvents } from '../../utilities/events-api';
 
+
 export default function NewEventPage({ user, setUser }) {
   const [createdEvents, setCreatedEvents] = useState([]);
 
