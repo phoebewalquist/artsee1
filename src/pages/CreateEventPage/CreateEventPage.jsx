@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { createNewEvent } from "../../utilities/events-api";
+import { useNavigate } from "react-router-dom";
 
 function CreateEventForm() {
   const [formData, setFormData] = useState({
@@ -10,6 +11,8 @@ function CreateEventForm() {
     eventTime: "",
     eventCategory: "",
   });
+
+  const navigate = useNavigate()
 
   const handleChange = (e) => {
     setFormData((prevFormData) => ({
@@ -23,15 +26,7 @@ function CreateEventForm() {
     try {
       const createdEvent = await createNewEvent(formData);
       console.log("Event created:", createdEvent);
-
-      setFormData({
-        title: "",
-        time: "",
-        details: "",
-        eventDate: "",
-        eventTime: "",
-        eventCategory: "",
-      });
+      navigate('/events')
     } catch (error) {
       console.error("Error creating event:", error);
     }

@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { getAllEvents } from '../../utilities/events-api';
+import React, { useEffect, useState } from "react";
+import { getAllEvents } from "../../utilities/events-api";
 
 export default function EventsList() {
   const [events, setEvents] = useState([]);
@@ -10,7 +10,7 @@ export default function EventsList() {
         const eventsData = await getAllEvents();
         setEvents(eventsData);
       } catch (error) {
-        console.error('Error fetching events:', error);
+        console.error("Error fetching events:", error);
       }
     };
 

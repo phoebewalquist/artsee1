@@ -17,13 +17,9 @@ export default function App() {
       {user ? (
         
           <Routes>
-            <Route
-              path="/events/new"
-              element={<NewEventPage user={user} setUser={setUser} />}
-            />
-            <Route path="/events" element={<CreateEventPage />} />
-            <Route path="/*" element={<Navigate to="/events/new" />} />
             <Route path="/events" element={<EventsList />} />
+            <Route path="/events/new" element={<CreateEventPage />} />
+            <Route path="/*" element={<Navigate to="/events" />} />
           </Routes>
         
       ) : (
