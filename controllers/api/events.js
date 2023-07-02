@@ -3,11 +3,10 @@ const Event = require('../../models/Event');
 
 const createEvent = async (req, res) => {
   try {
-    const { title, time, details, eventDate, eventTime, eventCategory } = req.body;
+    const { title, details, eventDate, eventTime, eventCategory } = req.body;
     console.log(req.body);
     const event = new Event({
       title,
-      time,
       details,
       eventDate,
       eventTime,
@@ -60,10 +59,22 @@ const deleteEvent = async (req, res) => {
   }
 };
 
+const getDetails = async (req, res) => {
+  try {
+    const eventId = req.params.id;
+    const event= await Event.findById(eventId);
+    res.json(event);
+  } catch (error) {
+    console.error('Error', error);
+    res.status(500).json({ error: 'Failed' });
+  }
+}
+
 
 module.exports = {
   createEvent,
   getAllEvents,
   getEventById,
   deleteEvent,
+  getDetails,
 };

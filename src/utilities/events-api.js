@@ -26,3 +26,7 @@ export async function createNewEvent(eventData) {
 export function deleteEvent(id) {
   return sendRequest(`${BASE_URL}/${id}/delete`, 'DELETE')
 }
+
+export function getEventDetails(id) {
+  return sendRequest(`${BASE_URL}/${id}`)
+}

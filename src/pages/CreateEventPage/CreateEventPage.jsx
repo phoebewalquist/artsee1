@@ -5,7 +5,6 @@ import { useNavigate } from "react-router-dom";
 function CreateEventForm() {
   const [formData, setFormData] = useState({
     title: "",
-    time: "",
     details: "",
     eventDate: "",
     eventTime: "",
@@ -42,13 +41,7 @@ function CreateEventForm() {
         onChange={handleChange}
       />
 
-      <label htmlFor="time">Event Time:</label>
-      <input
-        type="text"
-        name="time"
-        value={formData.time}
-        onChange={handleChange}
-      />
+
 
       <label htmlFor="details">Event Details:</label>
       <textarea

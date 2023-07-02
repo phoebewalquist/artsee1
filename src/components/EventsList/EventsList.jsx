@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { getAllEvents, deleteEvent } from "../../utilities/events-api";
-
+import {Link} from "react-router-dom"
+import "./EventsList.css"; 
 export default function EventsList() {
   const [events, setEvents] = useState([]);
 
@@ -30,19 +31,15 @@ export default function EventsList() {
   };
 
   return (
-    <div>
+    <form className="EventsList">
       <h1>Events List</h1>
       {events.map((event) => (
-        <div key={event._id}>
+        <div className="event" key={event._id}>
           <h3>{event.title}</h3>
-          <p>{event.time}</p>
-          <p>{event.details}</p>
-          <p>{event.eventDate}</p>
-          <p>{event.eventTime}</p>
-          <p>{event.eventCategory}</p>
-          <button onClick={() => handleDelete(event._id)}>Delete</button>
+         <Link to={`/events/${event._id}/details`} ><button className="details-button">DETAILS</button></Link>
+          <button onClick={() => handleDelete(event._id)}>DELETE</button>
         </div>
       ))}
-    </div>
+    </form>
   );
 }

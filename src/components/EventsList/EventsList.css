@@ -1,0 +1,48 @@
+.EventsList {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f5f5f5;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .EventsList h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  .EventsList .event {
+    width: 100%;
+    margin-bottom: 20px;
+    background-color: #ffffff;
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+  }
+  
+  .EventsList .event h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  
+  .EventsList .event p {
+    margin-bottom: 5px;
+}
+
+  
+  .EventsList .event button {
+    padding: 5px 10px;
+    background-color: #e53935;
+    color: #ffffff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .EventsList .event button:hover {
+    background-color: #c62828;
+  }
