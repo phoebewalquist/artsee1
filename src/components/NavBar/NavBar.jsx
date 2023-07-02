@@ -5,6 +5,7 @@ export default function NavBar() {
             <Link to="/events">ALL EVENTS</Link>
             &nbsp; | &nbsp;
             <Link to="/events/new">CREATE EVENT</Link>
+            {/* make login nav */}
         </nav>
     );
 }

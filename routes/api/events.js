@@ -5,6 +5,7 @@ const events = require('../../controllers/api/events');
 
 router.get('/', events.getAllEvents);
 router.post('/', events.createEvent)
+router.delete('/:id', events.deleteEvent);
 
 router.post('/', async (req, res) => {
   try {

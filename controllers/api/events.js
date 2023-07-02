@@ -49,9 +49,21 @@ const getEventById = async (req, res) => {
   }
 }
 
+const deleteEvent = async (req, res) => {
+  try {
+    const eventId = req.params.id;
+    await Event.findByIdAndDelete(eventId);
+    res.status(200).json('Success');
+  } catch (error) {
+    console.error('Error deleting event', error);
+    res.status(500).json({ error: 'Failed to delete event' });
+  }
+};
+
 
 module.exports = {
   createEvent,
   getAllEvents,
   getEventById,
+  deleteEvent,
 };

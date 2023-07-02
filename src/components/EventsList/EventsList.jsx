@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { getAllEvents } from "../../utilities/events-api";
+import { getAllEvents, deleteEvent } from "../../utilities/events-api";
 
 export default function EventsList() {
   const [events, setEvents] = useState([]);
@@ -17,6 +17,18 @@ export default function EventsList() {
     fetchData();
   }, []);
 
+  const handleDelete = async (eventId) => {
+    try {
+      await deleteEvent(eventId);
+      const newEvents = [...events];
+      const newEventsFiltered = newEvents.filter((event) => event._id !== eventId);
+      setEvents(newEventsFiltered);
+      console.log("Event deleted successfully.");
+    } catch (error) {
+      console.error("Error deleting event:", error);
+    }
+  };
+
   return (
     <div>
       <h1>Events List</h1>
@@ -28,6 +40,7 @@ export default function EventsList() {
           <p>{event.eventDate}</p>
           <p>{event.eventTime}</p>
           <p>{event.eventCategory}</p>
+          <button onClick={() => handleDelete(event._id)}>Delete</button>
         </div>
       ))}
     </div>

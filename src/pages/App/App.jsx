@@ -3,7 +3,7 @@ import { Routes, Route, Navigate } from "react-router-dom";
 import "./App.css";
 import { getUser } from "../../utilities/users-service";
 import AuthPage from "../AuthPage/AuthPage";
-import NewEventPage from "../NewEventPage/NewEventPage";
+// import NewEventPage from "../NewEventPage/NewEventPage";
 import CreateEventPage from "../CreateEventPage/CreateEventPage";
 import NavBar from "../../components/NavBar/NavBar";
 import EventsList from "../../components/EventsList/EventsList"

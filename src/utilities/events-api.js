@@ -22,3 +22,7 @@ export async function createNewEvent(eventData) {
     throw error;
   }
 }
+
+export function deleteEvent(id) {
+  return sendRequest(`${BASE_URL}/${id}/delete`, 'DELETE')
+}
