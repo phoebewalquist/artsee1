@@ -3,6 +3,19 @@ import sendRequest from "./send-request";
 const BASE_URL = "/api/events";
 
 
+
+
+
+export async function updateEvent(id, eventData) {
+  try {
+    const updatedEvent = await sendRequest(`${BASE_URL}/${id}`, "PUT", eventData);
+    return updatedEvent;
+  } catch (error) {
+    console.error("Error updating event:", error);
+    throw error;
+  }
+}
+
 export async function getAllEvents() {
   try {
     const events = await sendRequest(BASE_URL, "GET");

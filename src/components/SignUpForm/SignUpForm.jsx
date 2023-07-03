@@ -31,7 +31,7 @@ export default function SignUpForm({setUser}) {
       }
       const user = await usersService.signUp(formData)
       setUser(user)
-      navigate("/events/new")
+      navigate("/events")
       
     } catch {
       setSignUpForm({...signUpForm, error: 'Sign Up Failed - Try Again' })

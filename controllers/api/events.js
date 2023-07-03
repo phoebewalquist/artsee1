@@ -1,6 +1,19 @@
 const Event = require('../../models/Event');
 
 
+async function updateEvent(req, res) {
+  try {
+    const eventId = req.params.id;
+    const updatedEvent = req.body;
+    const event = await Event.findByIdAndUpdate(eventId, updatedEvent, { new: true });
+
+    res.status(200).json(event);
+  } catch (error) {
+    console.error('Error updating event:', error);
+    res.status(500).json({ error: 'Failed to update event' });
+  }
+}
+
 const createEvent = async (req, res) => {
   try {
     const { title, details, eventDate, eventTime, eventCategory } = req.body;
@@ -77,4 +90,5 @@ module.exports = {
   getEventById,
   deleteEvent,
   getDetails,
+  updateEvent,
 };

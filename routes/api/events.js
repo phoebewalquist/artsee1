@@ -7,6 +7,7 @@ router.get('/', events.getAllEvents);
 router.post('/', events.createEvent);
 router.delete('/:id/delete', events.deleteEvent);
 router.get('/:id', events.getDetails );
+router.put('/:id', events.updateEvent);
 
 router.post('/', async (req, res) => {
   try {
