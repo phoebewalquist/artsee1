@@ -44,10 +44,13 @@ export default function EventDetail() {
         details,
         eventDate,
         eventTime,
-        eventCategory
+        eventCategory,
       };
 
-      const updatedEventResponse = await eventsAPI.updateEvent(id, updatedEvent);
+      const updatedEventResponse = await eventsAPI.updateEvent(
+        id,
+        updatedEvent
+      );
       console.log("Event updated:", updatedEventResponse);
 
       setEvent(updatedEventResponse);
@@ -61,36 +64,23 @@ export default function EventDetail() {
       <h3>{event.title}</h3>
       <p>{event.details}</p>
       <p>{event.eventDate}</p>
-      <p>{event.eventTime}</p> 
-      <p>{event.eventCategory}</p> 
+      <p>{event.eventTime}</p>
+      <p>{event.eventCategory}</p>
+      
+       <div class="line"></div>
+        <h3 className="editEventTitle">EDIT EVENT:</h3>
+        
+        <p>edit title:</p>
+        <input type="text" onChange={(e) => setTitle(e.target.value)} />
+       
+        <p>edit details:</p>
+        <textarea
+          type="text"
+          onChange={(e) => setDetails(e.target.value)}
+        ></textarea>
 
-      <input
-        type="text"
-        value={title}
-        onChange={(e) => setTitle(e.target.value)}
-      />
-    
-      <textarea
-        value={details}
-        onChange={(e) => setDetails(e.target.value)}
-      ></textarea>
-      {/* <input
-        type="text"
-        value={eventDate}
-        onChange={(e) => setEventDate(e.target.value)}
-      />
-      <input
-        type="text"
-        value={eventTime}
-        onChange={(e) => setEventTime(e.target.value)}
-      /> */}
-      {/* <input
-        type="text"
-        value={eventCategory}
-        onChange={(e) => setEventCategory(e.target.value)}
-      /> */}
-
-      <button type="submit">Update Event</button>
+        <button type="submit">Update Event</button>
+   
     </form>
   );
 }
