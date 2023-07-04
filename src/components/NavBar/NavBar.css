@@ -1,24 +1,63 @@
+/* NavBar.css */
+
 .navContainer {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background-color: #f1f1f1;
-    padding: 10px;
-  }
-  
-  .navLogo {
-    font-size: 24px;
-    font-weight: bold;
-  }
-  
-  .navLinks {
-    margin-left: 20px;
-  }
-  
-  .navLogout {
-    margin-left: auto;
-  }
-  
-  .welcomeUser {
-    margin-right: auto;
-  }
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #222222;
+  padding: 10px 20px;
+  color: #ffffff;
+}
+
+.navLogo {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.navLinks {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 10px 35px;
+}
+
+
+.navLinks a {
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 10px 35px; /* Increase the padding for more space */
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+.navLinks a:hover {
+  background-color: #555555;
+}
+
+.active {
+  background-color: #555555;
+}
+
+.navLogout a {
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+.navLogout a:hover {
+  background-color: #5e5f5f;
+  color: #ffffff;
+}
+
+.navContainer::after {
+  content: "";
+  display: block;
+  height: 4px;
+  background-color: #f7f4f2;
+  width: 100%;
+}
+

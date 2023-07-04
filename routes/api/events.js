@@ -2,12 +2,13 @@ const express = require('express');
 const router = express.Router();
 const Event = require('../../models/Event');
 const events = require('../../controllers/api/events');
+const ensureLoggedIn = require('../../config/ensureLoggedIn')
 
 router.get('/', events.getAllEvents);
-router.post('/', events.createEvent);
-router.delete('/:id/delete', events.deleteEvent);
-router.get('/:id', events.getDetails );
-router.put('/:id', events.updateEvent);
+router.post('/', ensureLoggedIn, events.createEvent);
+router.delete('/:id/delete', ensureLoggedIn, events.deleteEvent);
+router.get('/:id', ensureLoggedIn, events.getDetails );
+router.put('/:id', ensureLoggedIn, events.updateEvent);
 
 router.post('/', async (req, res) => {
   try {
